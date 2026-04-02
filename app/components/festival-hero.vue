@@ -4,6 +4,8 @@ import { festival } from '~/data/site'
 
 <template>
   <section class="festival-hero" aria-labelledby="hero-title">
+    <ExpressionBackground />
+
     <div class="festival-hero__grain" aria-hidden="true" />
     <div class="festival-hero__grid" aria-hidden="true" />
 
@@ -44,14 +46,16 @@ import { festival } from '~/data/site'
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 1;
   opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  mix-blend-mode: multiply;
 }
 
 .festival-hero__grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   background-image:
     linear-gradient(to right, var(--color-border-subtle) 1px, transparent 1px),
@@ -63,7 +67,7 @@ import { festival } from '~/data/site'
 
 .festival-hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: var(--content-max);
   width: 100%;
   text-align: center;
@@ -105,7 +109,7 @@ import { festival } from '~/data/site'
 }
 
 .festival-hero__suffix {
-  color: var(--color-bg-base);
+  color: var(--color-fg-on-accent);
   background: var(--color-hero-accent);
   padding: 0 0.12em;
   -webkit-box-decoration-break: clone;

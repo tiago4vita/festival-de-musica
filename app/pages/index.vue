@@ -1,6 +1,7 @@
 <template>
   <main class="page-home">
     <FestivalHero />
+    <LineupSection />
     <AnnouncementTicker />
   </main>
 </template>

@@ -4,24 +4,32 @@
  */
 
 :root {
-  /* ——— Color ——— */
-  --color-bg-base: #0a0a0a;
-  --color-bg-elevated: #111111;
-  --color-fg-primary: #f5f5f5;
-  --color-fg-muted: #888888;
-  --color-border-subtle: #2a2a2a;
+  /* ——— Color (light theme) ——— */
+  --color-bg-base: #fafafa;
+  --color-bg-elevated: #ffffff;
+  --color-fg-primary: #0a0a0a;
+  --color-fg-muted: #5c5c5c;
+  --color-border-subtle: #e4e4e4;
+  --color-fg-on-accent: #0a0a0a;
 
   /* Accents (neon, high saturation) */
-  --color-accent-primary: #baff2e;
-  --color-accent-magenta: #ff00ff;
-  --color-accent-cyan: #00f5ff;
-  --color-accent-yellow: #fff200;
+  --color-accent-primary: #6ae800;
+  --color-accent-magenta: #d400ff;
+  --color-accent-cyan: #00b8d4;
+  --color-accent-yellow: #e8e000;
 
   /* Semantic hooks */
-  --color-ticker-bg: var(--color-bg-base);
-  --color-ticker-fg: var(--color-fg-primary);
+  --color-ticker-bg: #0a0a0a;
+  --color-ticker-fg: #f5f5f5;
   --color-ticker-accent: var(--color-accent-primary);
   --color-hero-accent: var(--color-accent-primary);
+  --color-lineup-b2b: var(--color-accent-primary);
+
+  /* Decorative multilingual layer (Mechatok-style wash) */
+  --color-expression-ink: rgba(10, 10, 10, 0.07);
+  --color-expression-ink-strong: rgba(10, 10, 10, 0.12);
+  --font-expression: "Space Grotesk", "Noto Sans JP", "Noto Sans KR", "Noto Sans Arabic",
+    system-ui, sans-serif;
 
   /* ——— Typography ——— */
   --font-display: "Space Grotesk", system-ui, sans-serif;
@@ -35,6 +43,11 @@
   --text-hero-lg: clamp(1.125rem, 2.5vw, 1.5rem);
   --text-label: 0.75rem;
   --text-ticker: clamp(0.9rem, 1.5vw, 1.05rem);
+  --text-expression-xl: clamp(2.5rem, 8vw, 5rem);
+  --text-expression-md: clamp(1rem, 3vw, 1.75rem);
+  --text-lineup-name: clamp(1.5rem, 4vw, 2.75rem);
+  /* Long set / special set — larger than caption */
+  --text-lineup-note: clamp(0.95rem, 1.65vw, 1.125rem);
   --letter-spacing-tight: -0.04em;
   --letter-spacing-wide: 0.12em;
 
@@ -46,6 +59,7 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
+  --space-section: clamp(4rem, 12vw, 8rem);
 
   --ticker-height: 3rem;
   --radius-sm: 0.25rem;
@@ -53,18 +67,28 @@
   --content-max: 72rem;
 
   /* ——— Effects ——— */
-  --grain-opacity: 0.12;
+  --grain-opacity: 0.06;
   --motion-fast: 180ms;
   --motion-base: 320ms;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Ticker (override in prefers-reduced-motion) */
   --ticker-duration: 45s;
+
+  /* Expression marquees */
+  --expression-duration-slow: 85s;
+  --expression-duration-mid: 55s;
+  --expression-duration-fast: 38s;
+  --expression-duration-vertical: 70s;
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --ticker-duration: 120s;
+    --expression-duration-slow: 140s;
+    --expression-duration-mid: 120s;
+    --expression-duration-fast: 100s;
+    --expression-duration-vertical: 130s;
   }
 }
 
