@@ -35,10 +35,12 @@ function buildSegments(
   let pi = (columnSeed * 2) % Math.max(phrases.length, 1)
   for (let k = 0; k < length; k++) {
     if (k % 3 === 1) {
-      out.push({ kind: 'body', text: phrases[pi % phrases.length] })
+      const phrase = phrases[pi % phrases.length] ?? ''
+      out.push({ kind: 'body', text: phrase })
       pi++
     } else {
-      out.push({ kind: 'headline', text: names[ni % names.length] })
+      const name = names[ni % names.length] ?? ''
+      out.push({ kind: 'headline', text: name })
       ni++
     }
   }
@@ -206,12 +208,11 @@ const columnsDay2 = computed(() =>
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: var(--space-lg);
   padding-block: var(--space-md);
 }
 
 .lineup-side-streams__line {
-  position: relative;
   margin: 0;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -221,21 +222,17 @@ const columnsDay2 = computed(() =>
   line-height: 1;
 }
 
-/* Big names read as the “frame”; small lines pull up into them (size contrast + overlap) */
+/* Size contrast only — lines stack with gap, no overlap in the same column */
 .lineup-side-streams__line--head {
-  z-index: 2;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.05em;
   font-size: clamp(1.05rem, 2.75vw, 1.9rem);
-  margin-bottom: -2.5rem;
 }
 
 .lineup-side-streams__line--body {
-  z-index: 3;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.22em;
-  font-size: clamp(0.38rem, 0.95vw, 0.52rem);
-  margin-bottom: -1.35rem;
+  font-size: clamp(0.76rem, 1.9vw, 1.04rem);
 }
 
 .lineup-side-streams__rail--day1 .lineup-side-streams__line--head,
