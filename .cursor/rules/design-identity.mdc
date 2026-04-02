@@ -8,7 +8,7 @@ alwaysApply: true
 ## Positioning
 
 - **Look:** **Modern, commercial, innovative** — editorial/fashion energy (bold art direction), not a default Bootstrap landing page.
-- **Keywords:** **Typographic**, **maximal**, **bold**, **multicultural**, **well-designed**, **young**, **cool**, **urban**, **digital**.
+- **Keywords:** **Typographic/sans-serif**, **maximal**, **bold**, **multicultural**, **well-designed**, **young**, **cool**, **urban**, **digital**, **color contrast**.
 - **Palette:** **Black & white** foundation + **small set of vibrant accents** (neon **acid green** is a lead accent in refs; also electric **magenta / cyan / yellow** as needed). High **contrast**; occasional **full-bleed** accent blocks (e.g. orange/green bars) like rave posters and club UI.
 
 ## Typography & layout
