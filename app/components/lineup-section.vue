@@ -34,7 +34,7 @@ function b2bParts(displayName: string): string[] {
             :aria-label="`${dayBlock.weekday} ${dayBlock.monthBracket} ${dayBlock.dayOfMonth}, schedule`"
           >
             <thead>
-              <tr class="lineup__thead-row">
+              <tr>
                 <th
                   scope="col"
                   class="lineup__th lineup__th--label"
@@ -90,27 +90,28 @@ function b2bParts(displayName: string): string[] {
                   {{ ' ' }}{{ dayBlock.yearShort }}
                 </td>
                 <td class="lineup__cell lineup__cell--country">
-                  {{ dayBlock.countryCode }}
+                  {{ row.countryCode }}
                 </td>
                 <td class="lineup__cell lineup__cell--stage">
                   {{ row.stage }}
                 </td>
                 <td class="lineup__cell lineup__cell--artist">
-                  <span class="lineup__name">
-                    <template
-                      v-for="(part, i) in b2bParts(row.displayName)"
-                      :key="`${row.id}-${i}`"
-                    >
-                      <template v-if="i > 0">
-                        <span class="lineup__b2b">b2b</span>
-                        {{ ' ' }}
-                      </template>{{ part }}
-                    </template>
+                  <span class="lineup__artist-line">
+                    <span class="lineup__name">
+                      <template
+                        v-for="(part, i) in b2bParts(row.displayName)"
+                        :key="`${row.id}-${i}`"
+                      >
+                        <template v-if="i > 0">
+                          {{ ' ' }}<span class="lineup__b2b">b2b</span>{{ ' ' }}
+                        </template>{{ part }}
+                      </template>
+                    </span>
+                    <span
+                      v-if="row.note"
+                      class="lineup__note"
+                    >{{ row.note }}</span>
                   </span>
-                  <span
-                    v-if="row.note"
-                    class="lineup__note"
-                  >{{ row.note }}</span>
                 </td>
               </tr>
             </tbody>
@@ -167,22 +168,20 @@ function b2bParts(displayName: string): string[] {
   border-collapse: collapse;
   table-layout: fixed;
   font-family: var(--font-display);
-  font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+  font-size: clamp(0.78rem, 1.35vw, 0.95rem);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-fg-primary);
-}
-
-.lineup__thead-row {
-  border-bottom: 1px solid transparent;
+  line-height: 1.12;
 }
 
 .lineup__th {
-  padding: 0 0 var(--space-sm);
+  padding: 0 0 var(--space-xs);
   font-weight: var(--font-weight-semibold);
   text-align: left;
   vertical-align: bottom;
+  line-height: 1.1;
   color: var(--color-fg-muted);
 }
 
@@ -226,23 +225,19 @@ function b2bParts(displayName: string): string[] {
   padding-right: clamp(0.75rem, 2vw, 1.75rem);
 }
 
-.lineup__row {
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.lineup__row:last-child {
-  border-bottom: none;
-}
-
 .lineup__cell {
-  padding: var(--space-md) clamp(0.5rem, 1.5vw, 1rem) var(--space-md) 0;
+  padding: var(--space-xs) clamp(0.5rem, 1.5vw, 1rem) var(--space-xs) 0;
   vertical-align: top;
-  line-height: 1.35;
+  line-height: 1.12;
   word-break: break-word;
 }
 
 .lineup__cell--artist {
   padding-right: 0;
+}
+
+.lineup__artist-line {
+  display: inline;
 }
 
 .lineup__ordinal {
@@ -253,26 +248,30 @@ function b2bParts(displayName: string): string[] {
 
 .lineup__name {
   display: inline;
-  font-size: clamp(0.85rem, 1.45vw, 1.05rem);
+  font-size: var(--text-lineup-name);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.04em;
-  line-height: 1.3;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
   color: var(--color-fg-primary);
 }
 
 .lineup__b2b {
+  display: inline;
+  font-size: 0.52em;
   font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: lowercase;
+  vertical-align: 0.2em;
   color: var(--color-lineup-b2b);
 }
 
 .lineup__note {
-  display: block;
-  margin-top: var(--space-xs);
-  font-size: var(--text-label);
+  display: inline;
+  margin-left: 0.35em;
+  font-size: clamp(0.65rem, 1.15vw, 0.8rem);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-wide);
+  letter-spacing: 0.06em;
+  line-height: 1.15;
   text-transform: uppercase;
   color: var(--color-accent-magenta);
 }

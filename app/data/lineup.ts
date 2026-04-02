@@ -8,6 +8,8 @@ export interface LineupScheduleRow {
   /** Stable id for keys */
   id: string
   stage: LineupStage
+  /** ISO-style tag in brackets, e.g. [DE] */
+  countryCode: string
   /** Primary display string */
   displayName: string
   /** Optional subtitle, e.g. special set */
@@ -23,8 +25,6 @@ export interface LineupDayBlock {
   dayOfMonth: number
   /** e.g. '26 */
   yearShort: string
-  /** e.g. [UK] */
-  countryCode: string
   rows: LineupScheduleRow[]
 }
 
@@ -41,6 +41,7 @@ export function ordinalSuffix(day: number): string {
 
 /**
  * Friday / Saturday — MAIN vs LAB; wide grid alignment in `lineup-section.vue`.
+ * `countryCode` = fictional origin / scene tag per act (bracketed in UI).
  */
 export const lineupDays: LineupDayBlock[] = [
   {
@@ -49,23 +50,23 @@ export const lineupDays: LineupDayBlock[] = [
     monthBracket: '[NOV]',
     dayOfMonth: 20,
     yearShort: "'26",
-    countryCode: '[UK]',
     rows: [
-      { id: 'ihm', stage: 'MAIN', displayName: 'I Hate Models' },
-      { id: 'peggy', stage: 'MAIN', displayName: 'Peggy Gou' },
+      { id: 'ihm', stage: 'MAIN', countryCode: '[FR]', displayName: 'I Hate Models' },
+      { id: 'peggy', stage: 'MAIN', countryCode: '[KR]', displayName: 'Peggy Gou' },
       {
         id: 'fred-four-sk',
         stage: 'MAIN',
+        countryCode: '[UK]',
         displayName: 'Fred Again.. b2b Four Tet b2b Skrillex',
       },
-      { id: 'klang', stage: 'MAIN', displayName: 'Klangkuenstler' },
-      { id: 'sara-landry', stage: 'MAIN', displayName: 'Sara Landry' },
-      { id: 'heartstring', stage: 'MAIN', displayName: 'DJ Heartstring' },
-      { id: 'ueberrest', stage: 'LAB', displayName: 'Ueberrest' },
-      { id: 'shlomo', stage: 'LAB', displayName: 'Shlomo' },
-      { id: 'mischluft', stage: 'LAB', displayName: 'Mischluft' },
-      { id: 'alex-farell', stage: 'LAB', displayName: 'Alex Farell' },
-      { id: 'kettama', stage: 'LAB', displayName: 'Kettama' },
+      { id: 'klang', stage: 'MAIN', countryCode: '[DE]', displayName: 'Klangkuenstler' },
+      { id: 'sara-landry', stage: 'MAIN', countryCode: '[US]', displayName: 'Sara Landry' },
+      { id: 'heartstring', stage: 'MAIN', countryCode: '[DE]', displayName: 'DJ Heartstring' },
+      { id: 'ueberrest', stage: 'LAB', countryCode: '[DE]', displayName: 'Ueberrest' },
+      { id: 'shlomo', stage: 'LAB', countryCode: '[FR]', displayName: 'Shlomo' },
+      { id: 'mischluft', stage: 'LAB', countryCode: '[DE]', displayName: 'Mischluft' },
+      { id: 'alex-farell', stage: 'LAB', countryCode: '[UK]', displayName: 'Alex Farell' },
+      { id: 'kettama', stage: 'LAB', countryCode: '[IE]', displayName: 'Kettama' },
     ],
   },
   {
@@ -74,29 +75,31 @@ export const lineupDays: LineupDayBlock[] = [
     monthBracket: '[NOV]',
     dayOfMonth: 21,
     yearShort: "'26",
-    countryCode: '[UK]',
     rows: [
-      { id: 'brutalismus3000', stage: 'MAIN', displayName: 'Brutalismus 3000' },
-      { id: 'kobosil', stage: 'MAIN', displayName: 'Kobosil' },
-      { id: 'horsegiirl', stage: 'MAIN', displayName: 'horsegiirL' },
-      { id: 'mallgrab', stage: 'MAIN', displayName: 'Mall Grab', note: 'Long set' },
+      { id: 'brutalismus3000', stage: 'MAIN', countryCode: '[DE]', displayName: 'Brutalismus 3000' },
+      { id: 'kobosil', stage: 'MAIN', countryCode: '[DE]', displayName: 'Kobosil' },
+      { id: 'horsegiirl', stage: 'MAIN', countryCode: '[DE]', displayName: 'horsegiirL' },
+      { id: 'mallgrab', stage: 'MAIN', countryCode: '[AU]', displayName: 'Mall Grab', note: 'Long set' },
       {
         id: 'yukimatsu',
         stage: 'MAIN',
+        countryCode: '[JP]',
         displayName: '¥ØU$UK€ ¥UK1MAT$U',
       },
-      { id: 'u96', stage: 'MAIN', displayName: 'U96' },
-      { id: 'pegassi', stage: 'LAB', displayName: 'Pegassi' },
-      { id: 'atrip', stage: 'LAB', displayName: 'ATRIP' },
-      { id: 'swim', stage: 'LAB', displayName: 'Swim' },
+      { id: 'u96', stage: 'MAIN', countryCode: '[DE]', displayName: 'U96' },
+      { id: 'pegassi', stage: 'LAB', countryCode: '[UK]', displayName: 'Pegassi' },
+      { id: 'atrip', stage: 'LAB', countryCode: '[SE]', displayName: 'ATRIP' },
+      { id: 'swim', stage: 'LAB', countryCode: '[UK]', displayName: 'Swim' },
       {
         id: 'worm-eurohead',
         stage: 'LAB',
+        countryCode: '[NL]',
         displayName: 'DJ Worm b2b Eurohead',
       },
       {
         id: 'ecco2k',
         stage: 'LAB',
+        countryCode: '[SE]',
         displayName: 'Ecco2k',
         note: 'Special set',
       },
