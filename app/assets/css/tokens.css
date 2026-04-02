@@ -25,6 +25,12 @@
   --color-hero-accent: var(--color-accent-primary);
   --color-lineup-b2b: var(--color-accent-primary);
 
+  /* Lineup side rails — solid neon contrast (no translucent type on rails) */
+  --color-lineup-rail-day1-bg: #e012e0;
+  --color-lineup-rail-day1-fg: #ff0000;
+  --color-lineup-rail-day2-bg: #c8ff00;
+  --color-lineup-rail-day2-fg: #000000;
+
   /* Decorative multilingual layer (Mechatok-style wash) */
   --color-expression-ink: rgba(10, 10, 10, 0.07);
   --color-expression-ink-strong: rgba(10, 10, 10, 0.12);

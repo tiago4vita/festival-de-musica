@@ -8,7 +8,7 @@ export interface LineupScheduleRow {
   /** Stable id for keys */
   id: string
   stage: LineupStage
-  /** ISO-style tag in brackets, e.g. [DE] */
+  /** Shown under [FROM], e.g. [DE] */
   countryCode: string
   /** Primary display string */
   displayName: string
@@ -63,7 +63,7 @@ export const lineupDays: LineupDayBlock[] = [
       { id: 'sara-landry', stage: 'MAIN', countryCode: '[US]', displayName: 'Sara Landry' },
       { id: 'heartstring', stage: 'MAIN', countryCode: '[DE]', displayName: 'DJ Heartstring' },
       { id: 'ueberrest', stage: 'LAB', countryCode: '[DE]', displayName: 'Ueberrest' },
-      { id: 'shlomo', stage: 'LAB', countryCode: '[FR]', displayName: 'Shlomo' },
+      { id: 'shlomo', stage: 'LAB', countryCode: '[FR]', displayName: 'Shlømo' },
       { id: 'mischluft', stage: 'LAB', countryCode: '[DE]', displayName: 'Mischluft' },
       { id: 'alex-farell', stage: 'LAB', countryCode: '[UK]', displayName: 'Alex Farell' },
       { id: 'kettama', stage: 'LAB', countryCode: '[IE]', displayName: 'Kettama' },
